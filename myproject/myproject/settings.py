@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'myapp',
+    'whitenoise.runserver_nostatic',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -117,7 +119,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-
+# STATIC_DIRS = os.path.join(BASE_DIR,'myapp/static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -125,4 +127,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 import os
 STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_DIRS = os.path.join(BASE_DIR,'myapp/static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
